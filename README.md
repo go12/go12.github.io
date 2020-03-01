@@ -3,6 +3,8 @@
 GO GitHub Pages Website
 based on [http://jmcglone.com/guides/github-pages/](http://jmcglone.com/guides/github-pages/)
 
+YouTube embed tips [https://github.com/nathancy/jekyll-embed-video#embed-youtube](https://github.com/nathancy/jekyll-embed-video#embed-youtube)
+
 ---
 
 Sample .jpg<br>
