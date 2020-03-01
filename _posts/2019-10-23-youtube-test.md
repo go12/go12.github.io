@@ -1,17 +1,10 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2511
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+---
+layout: post
+title: YOUTUBE - Bitwarden Test
+categories: [company]
+tags: [reviews, video]
+date: 2020-01-24
+youtubeId: 3Y8O0wyYsiQ
+---
 
-\f0\fs24 \cf0 ---\
-layout: post\
-title: YOUTUBE - test\
-categories: [company]\
-tags: [reviews, video]\
-date: 2019-10-23\
-youtubeId: 3Y8O0wyYsiQ\
----\
-\
-\{% include youtubePlayer.html id=page.youtubeId %\}}
+{% include youtubePlayer.html id=page.youtubeId %}
