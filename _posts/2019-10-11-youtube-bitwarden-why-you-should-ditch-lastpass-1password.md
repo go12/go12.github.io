@@ -1,6 +1,6 @@
 ---
 layout: post
-title: YOUTUBE - BitWarden: Why You Should Ditch LastPass, 1Password
+title: YOUTUBE - BitWarden: Why You Should Ditch LastPass 1Password
 categories: [company]
 tags: [reviews, video]
 date: 2019-10-11
