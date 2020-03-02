@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MACUPDATE - Mac Password Managers: Protecting Your Online Mac Identity
+title: MACUPDATE - Mac Password Managers - Protecting Your Online Mac Identity
 categories: [company]
 tags: [reviews]
 date: 2020-01-17
