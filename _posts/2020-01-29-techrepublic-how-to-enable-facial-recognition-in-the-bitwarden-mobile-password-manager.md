@@ -2,7 +2,7 @@
 layout: post
 title: TECHREPUBLIC - How to enable facial recognition in the Bitwarden mobile password manager
 categories: [company]
-tags: [reviews]
+tags: [reviews, 2FA]
 date: 2020-01-29
 ---
 
