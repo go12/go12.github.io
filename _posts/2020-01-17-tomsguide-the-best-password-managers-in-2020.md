@@ -2,7 +2,7 @@
 layout: post
 title: TOMSGUIDE - The best password managers in 2020
 categories: [industry]
-tags: [2FA]
+tags:
 date: 2020-01-17
 ---
 
