@@ -1,6 +1,6 @@
 ---
 layout: post
-title: GEARPATROL - Why You Need a Password Manager (And Four to Try)
+title: GEARPATROL - Why You Need a Password Manager - And Four to Try
 categories: [company]
 tags: [reviews]
 date: 2020-02-24
