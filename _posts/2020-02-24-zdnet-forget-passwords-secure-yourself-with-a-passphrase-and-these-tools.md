@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ZDNET - Forget passwords: Secure yourself with a passphrase and these tools
+title: ZDNET - Forget passwords - Secure yourself with a passphrase and these tools
 categories: [industry]
 tags: [passphrases]
 date: 2020-02-24
