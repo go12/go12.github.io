@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MACWORLD - Getting started with 2FA: Secure your accounts now or regret it later!
+title: MACWORLD - Getting started with 2FA - Secure your accounts now or regret it later!
 categories: [industry]
 tags: [2FA]
 date: 2020-02-10
