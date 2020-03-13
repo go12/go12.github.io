@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CNET - Password managers: A little pain for a lot of security
+title: CNET - Password managers - A little pain for a lot of security
 categories: [industry]
 tags:
 date: 2020-03-10
