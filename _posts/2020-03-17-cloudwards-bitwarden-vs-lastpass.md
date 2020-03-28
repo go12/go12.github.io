@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CLOUDWARDS - Bitwarden vs LastPass: Free Fighting in 2020
+title: CLOUDWARDS - Bitwarden vs LastPass - Free Fighting in 2020
 categories: [company]
 tags: [reviews]
 date: 2020-03-17
