@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TECHRADAR - How to protect your remote workforce from opportunistic cyber attackers
-categories: [industry]
+categories: [industry, 2FA]
 tags:
 date: 2020-03-24
 ---
