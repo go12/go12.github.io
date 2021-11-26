@@ -3,61 +3,9 @@ layout: default
 title: Resources
 ---
 
-		<div class="resources">
-			<h1>Resources</h1>
-			<p>Resources stuff here</p>
-		</div>
+<div class="resources">
+	<h1>Resources</h1>
+	<p>Resources stuff here</p>
+	</div>
 
-       <p>As more of our daily and professional lives move online, both personal and company security depends on all of us. Cyber attacks and data breaches unfortunately continue, with password management often cited as an easy step to mitigate risk.</p>
-
-<p>But how can you trust a company to keep all of your secrets secret? The answer lies in end-to-end encryption, which lays the groundwork for applications with ‘zero knowledge’ architectures.</p>
-
-<p>In a recent article on <a href="https://www.techradar.com/news/5-things-you-need-to-consider-before-buying-a-password-manager">TechRadar</a>, author Christian Rigg noted,</p>
-
-<blockquote>
-  <p>Zero knowledge refers to policies and architecture that eliminate the possibility for a password manager to access your password.</p>
-</blockquote>
-
-<p>While this is a perfect explanation of zero knowledge for a broad audience, security experts will differ in the interpretation of zero knowledge. We know we want zero knowledge in terms of safely handling encrypted passwords with password managers, but what exactly does that mean?</p>
-
-<h2 id="start-with-strong-end-to-end-encryption">Start with strong end-to-end encryption</h2>
-<p>The foundation of a secure architecture starts with encryption, specifically end-to-end encryption. At Bitwarden we encrypt your sensitive data immediately as soon as you enter it in any Bitwarden client. Before storing the data on your device, it is encrypted. There is no such thing as unencrypted Vault data, except when you are in control, viewing the information in a Bitwarden client where you have entered your email address and Master Password.</p>
-
-<p>From there, all Vault data remains encrypted when sent to the Bitwarden Cloud or a self-hosted Bitwarden server. Upon synchronizing the data to other clients, it remains encrypted until the unique email address and master password are re-entered.</p>
-
-<p>This means that Bitwarden as a company <strong>cannot</strong> see your passwords, they remain encrypted end-to-end with your individual email and Master Password. We never store and cannot access your Master Password.</p>
-
-<p>For Vault data, Bitwarden uses AES 256-bit encryption, an industry standard, which is considered unbreakable. For your Master Password, PBKDF2 SHA-256 is used to derive the key that encrypts your Vault data. To read more about Bitwarden security, please visit our <a href="https://bitwarden.com/help/security/">security FAQ</a>.</p>
-
-<p>Understandably, the important detail of end-to-end encryption is the key to decrypt. As long as this remains <strong>only</strong> with the end user, a solution can progress to a zero knowledge architecture.</p>
-
-<p>There are cases where software and service providers promote encryption but retain the key. These cases do not qualify as zero knowledge from our perspective since the software and service providers technically have the ability to decrypt the data.</p>
-
-<h2 id="give-users-key-control-for-zero-knowledge-encryption">Give users key control for zero knowledge encryption</h2>
-<p>When users have control of the encryption key, they control access to the data, and can provide encrypted data to a password manager without the password management company having access to, or knowledge of, that data.</p>
-
-<p>This is the fundamental premise on which well-designed password managers work. They facilitate strong and unique passwords that only you can access. Doing so requires zero knowledge of the secret data, and therefore users must control the encryption key. We refer to this as zero knowledge encryption.</p>
-
-<p>But there is information beyond the secret Vault data that might be shared with a software or service provider. For example, an email address might serve as a unique customer identifier. One could claim that this isn’t zero knowledge, and that would be correct.</p>
-
-<p>At a minimum, zero knowledge must pertain to secret data. In the case of a password manager, that means all information within the password Vault. At the same time, it is important to recognize the realities of software, services, and users, and that in order for a commercial relationship to exist, their likely needs to be <strong>some</strong> knowledge exchanged between parties.</p>
-
-<p>In the world of password managers, that line can get blurry. For example there are some password managers (not Bitwarden) that retain <em>unencrypted</em> URLs and websites for which you store passwords. While they claim that this benefits users, ultimately it provides these companies with detailed information on which websites users visit, when they do so, and every log in.</p>
-
-<p>Bitwarden takes a more conservative view of what constitutes sensitive data, and therefore encrypts all of the information in your Vault, including the websites you visit, even the names of your individual items and folders. We use the term zero knowledge encryption because only you retain the keys to your Vault, and the entirety of your vault is encrypted. Bitwarden cannot see your passwords, your websites, or anything else that you put in your Vault. Bitwarden also does not know your Master Password. So take good care of it, because if it gets lost, the Bitwarden team cannot recover it for you.</p>
-
-<h2 id="zero-trust-as-a-protective-mindset">Zero trust as a protective mindset</h2>
-<p>The zero trust model initially emerged as a way for organizations to get beyond the traditional thinking of internal and external threats to their IT operations. Today, companies need to protect from threats coming from both inside <strong>and</strong> outside. Zero Trust models often use technologies like identity and access management, encryption, multi-factor authentication, and permissions to operate.</p>
-
-<p>Of course, between password managers and users adopting software or services, there is likely going to be at least <strong>some</strong> element of trust between the two parties. The password management provider trusts that the user will not violate the terms of service, and the user trusts that the password management provider will live up to their stated offering. However, everyone is better off if the boundaries of required trust are limited, so that even the possibility of sensitive data being compromised is eliminated altogether, hence the zero trust model.</p>
-
-<p>While we stand by to support our customers with a trusted relationship, we can reduce the reliance on implied trust through the Bitwarden self-hosted offering. This deployment enables businesses with greater flexibility and control over their infrastructure. Running your own Bitwarden instance could be on an airgap network, further reducing risks by being disconnected from the internet.</p>
-
-<p>At Bitwarden we take this trusted relationship with our users seriously. We also built our solution to be safe and secure with end-to-end encryption for all Vault data, including website URLs, so that your sensitive data is “zero trust” secure.</p>
-
-<h2 id="understand-and-adopting-safe-encryption-practices">Understand and adopting safe encryption practices</h2>
-<p>We want our users to be well-informed on security practices in general, and with the benefits Bitwarden provides. With encryption, seek a complete end-to-end encryption architecture where only the end user retains the key, and make sure all sensitive data is encrypted using that architecture.</p>
-
-<p>For many, it is easier to understand zero knowledge than end-to-end encryption, and we like easy! But we also understand the intricacies of these terms and aim to maintain clear definitions. We hope this article helps clarify our philosophy and approach.</p>
-
-<p>If you’d like to try a zero knowledge encryption solution today, you can sign up for a free Bitwarden account <a href="https://vault.bitwarden.com/#/register">here</a>.</p>
+<p>Sample info here</p>
