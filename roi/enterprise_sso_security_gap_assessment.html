@@ -1,0 +1,201 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Instrument+Serif&display=swap');
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --sso: #3266ad; --gap: #C04828; --pwm: #1D9E75;
+  --sso-light: #E6F1FB; --gap-light: #FAECE7; --pwm-light: #E1F5EE;
+  --sso-mid: #85B7EB; --gap-mid: #F0997B; --pwm-mid: #5DCAA5;
+}
+body { font-family: 'DM Sans', sans-serif; color: var(--color-text-primary); }
+.hero { text-align: center; padding: 2rem 0 1rem; }
+.hero h1 { font-family: 'Instrument Serif', serif; font-size: 28px; font-weight: 400; line-height: 1.2; margin-bottom: 6px; }
+.hero p { font-size: 13px; color: var(--color-text-secondary); max-width: 460px; margin: 0 auto; line-height: 1.5; }
+.controls { display: flex; gap: 24px; margin: 1.5rem 0; flex-wrap: wrap; }
+.ctrl-group { flex: 1; min-width: 200px; }
+.ctrl-group label { display: block; font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px; font-weight: 500; letter-spacing: 0.02em; }
+.ctrl-group .val { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+.ctrl-group input[type=range] { width: 100%; }
+.viz-area { position: relative; margin: 1.5rem 0 1rem; }
+.app-grid { display: flex; flex-wrap: wrap; gap: 3px; padding: 12px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-secondary); min-height: 120px; transition: min-height 0.3s; }
+.app-dot { width: 10px; height: 10px; border-radius: 2px; transition: background 0.4s, transform 0.2s, opacity 0.3s; }
+.app-dot.sso { background: var(--sso); }
+.app-dot.gap { background: var(--gap); opacity: 0.85; }
+.app-dot.pwm { background: var(--pwm); }
+.legend-bar { display: flex; gap: 20px; margin: 10px 0 0 12px; font-size: 12px; color: var(--color-text-secondary); flex-wrap: wrap; }
+.legend-bar span { display: flex; align-items: center; gap: 5px; }
+.legend-bar .dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 1.5rem 0; }
+.metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+.metric .label { font-size: 11px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+.metric .number { font-size: 20px; font-weight: 500; }
+.metric .number.danger { color: var(--gap); }
+.metric .number.safe { color: var(--pwm); }
+.phase-toggle { display: flex; gap: 0; margin: 1.5rem 0; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); overflow: hidden; }
+.phase-btn { flex: 1; padding: 10px 8px; font-size: 13px; font-weight: 500; text-align: center; cursor: pointer; border: none; background: var(--color-background-primary); color: var(--color-text-secondary); transition: all 0.25s; font-family: inherit; }
+.phase-btn:not(:last-child) { border-right: 0.5px solid var(--color-border-secondary); }
+.phase-btn.active { color: #fff; }
+.phase-btn.active[data-phase="current"] { background: var(--gap); }
+.phase-btn.active[data-phase="protected"] { background: var(--pwm); }
+.risk-section { margin: 1.5rem 0 0.5rem; padding: 16px 20px; border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); transition: all 0.4s; }
+.risk-section.danger { border-color: var(--gap-mid); background: var(--gap-light); }
+.risk-section.safe { border-color: var(--pwm-mid); background: var(--pwm-light); }
+.risk-section h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+.risk-section.danger h3 { color: #712B13; }
+.risk-section.safe h3 { color: #085041; }
+.risk-section p { font-size: 13px; line-height: 1.55; }
+.risk-section.danger p { color: #993C1D; }
+.risk-section.safe p { color: #0F6E56; }
+.bar-chart { margin: 1rem 0; }
+.bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.bar-label { font-size: 12px; color: var(--color-text-secondary); width: 110px; text-align: right; flex-shrink: 0; }
+.bar-track { flex: 1; height: 22px; background: var(--color-background-secondary); border-radius: 4px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: 11px; font-weight: 500; color: #fff; min-width: 32px; }
+.bar-fill.sso { background: var(--sso); }
+.bar-fill.gap { background: var(--gap); }
+.bar-fill.pwm { background: var(--pwm); }
+.cost-callout { display: flex; align-items: center; gap: 12px; margin: 1rem 0; padding: 14px 18px; border-radius: var(--border-radius-md); background: var(--color-background-secondary); }
+.cost-callout .icon { font-size: 22px; flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 500; }
+.cost-callout .icon.danger { background: var(--gap-light); color: var(--gap); }
+.cost-callout .icon.safe { background: var(--pwm-light); color: var(--pwm); }
+.cost-callout .text { font-size: 13px; line-height: 1.5; color: var(--color-text-secondary); }
+.cost-callout .text strong { color: var(--color-text-primary); font-weight: 500; }
+</style>
+
+<div class="hero">
+  <h1>The SSO coverage gap</h1>
+  <p>Most enterprises protect only a fraction of their apps with SSO. Explore your exposure below.</p>
+</div>
+
+<div class="controls">
+  <div class="ctrl-group">
+    <label>Total applications</label>
+    <div class="val" id="total-val">800</div>
+    <input type="range" min="100" max="5000" step="50" value="800" id="total-slider" oninput="update()">
+  </div>
+  <div class="ctrl-group">
+    <label>SSO coverage</label>
+    <div class="val" id="sso-val">25%</div>
+    <input type="range" min="5" max="80" step="1" value="25" id="sso-slider" oninput="update()">
+  </div>
+  <div class="ctrl-group">
+    <label>Avg. cost per breach</label>
+    <div class="val" id="cost-val">$4.5M</div>
+    <input type="range" min="1" max="15" step="0.5" value="4.5" id="cost-slider" oninput="update()">
+  </div>
+</div>
+
+<div class="phase-toggle">
+  <button class="phase-btn active" data-phase="current" onclick="setPhase('current')">Current state: SSO only</button>
+  <button class="phase-btn" data-phase="protected" onclick="setPhase('protected')">With password manager</button>
+</div>
+
+<div class="viz-area">
+  <div class="app-grid" id="app-grid"></div>
+  <div class="legend-bar" id="legend"></div>
+</div>
+
+<div class="metrics" id="metrics"></div>
+
+<div class="bar-chart" id="bar-chart"></div>
+
+<div class="risk-section" id="risk-box"></div>
+
+<div class="cost-callout" id="cost-box"></div>
+
+<script>
+let phase = 'current';
+
+function setPhase(p) {
+  phase = p;
+  document.querySelectorAll('.phase-btn').forEach(b => b.classList.toggle('active', b.dataset.phase === p));
+  update();
+}
+
+function update() {
+  const total = parseInt(document.getElementById('total-slider').value);
+  const ssoPct = parseInt(document.getElementById('sso-slider').value);
+  const costM = parseFloat(document.getElementById('cost-slider').value);
+  
+  document.getElementById('total-val').textContent = total.toLocaleString();
+  document.getElementById('sso-val').textContent = ssoPct + '%';
+  document.getElementById('cost-val').textContent = '$' + costM.toFixed(1) + 'M';
+  
+  const ssoCount = Math.round(total * ssoPct / 100);
+  const gapCount = total - ssoCount;
+  
+  const grid = document.getElementById('app-grid');
+  const maxDots = 400;
+  const scale = total > maxDots ? maxDots / total : 1;
+  const dotTotal = Math.min(total, maxDots);
+  const dotSSO = Math.round(ssoCount * scale);
+  const dotGap = dotTotal - dotSSO;
+  
+  let html = '';
+  for (let i = 0; i < dotSSO; i++) {
+    html += '<div class="app-dot sso"></div>';
+  }
+  if (phase === 'current') {
+    for (let i = 0; i < dotGap; i++) {
+      html += '<div class="app-dot gap"></div>';
+    }
+  } else {
+    for (let i = 0; i < dotGap; i++) {
+      html += '<div class="app-dot pwm"></div>';
+    }
+  }
+  grid.innerHTML = html;
+  
+  const legendEl = document.getElementById('legend');
+  if (phase === 'current') {
+    legendEl.innerHTML = `
+      <span><span class="dot" style="background:var(--sso)"></span>Protected by SSO (${ssoCount.toLocaleString()})</span>
+      <span><span class="dot" style="background:var(--gap)"></span>Unprotected (${gapCount.toLocaleString()})</span>
+    `;
+  } else {
+    legendEl.innerHTML = `
+      <span><span class="dot" style="background:var(--sso)"></span>Protected by SSO (${ssoCount.toLocaleString()})</span>
+      <span><span class="dot" style="background:var(--pwm)"></span>Protected by password manager (${gapCount.toLocaleString()})</span>
+    `;
+  }
+  
+  const unprotectedPct = phase === 'current' ? (100 - ssoPct) : 0;
+  const pwmPct = phase === 'protected' ? (100 - ssoPct) : 0;
+  const riskMultiplier = phase === 'current' ? (gapCount / total) : 0.02;
+  const estimatedRisk = costM * riskMultiplier * 0.15;
+  const credentialReuse = phase === 'current' ? Math.round(gapCount * 0.65) : Math.round(gapCount * 0.04);
+  
+  document.getElementById('metrics').innerHTML = `
+    <div class="metric"><div class="label">Apps outside SSO</div><div class="number ${phase === 'current' ? 'danger' : 'safe'}">${phase === 'current' ? gapCount.toLocaleString() : '0'}</div></div>
+    <div class="metric"><div class="label">Unprotected apps</div><div class="number ${phase === 'current' ? 'danger' : 'safe'}">${phase === 'current' ? gapCount.toLocaleString() : '0'}</div></div>
+    <div class="metric"><div class="label">Credential reuse risk</div><div class="number ${phase === 'current' ? 'danger' : 'safe'}">${credentialReuse.toLocaleString()} apps</div></div>
+    <div class="metric"><div class="label">Annualized risk exposure</div><div class="number ${phase === 'current' ? 'danger' : 'safe'}">$${estimatedRisk.toFixed(1)}M</div></div>
+  `;
+  
+  document.getElementById('bar-chart').innerHTML = `
+    <div class="bar-row"><span class="bar-label">SSO coverage</span><div class="bar-track"><div class="bar-fill sso" style="width:${ssoPct}%">${ssoPct}%</div></div></div>
+    <div class="bar-row"><span class="bar-label">Password manager</span><div class="bar-track"><div class="bar-fill pwm" style="width:${pwmPct}%">${pwmPct > 0 ? pwmPct + '%' : ''}</div></div></div>
+    <div class="bar-row"><span class="bar-label">Unprotected</span><div class="bar-track"><div class="bar-fill gap" style="width:${unprotectedPct}%">${unprotectedPct > 0 ? unprotectedPct + '%' : ''}</div></div></div>
+  `;
+  
+  const riskBox = document.getElementById('risk-box');
+  if (phase === 'current') {
+    riskBox.className = 'risk-section danger';
+    riskBox.innerHTML = `<h3>High risk: ${gapCount.toLocaleString()} applications have no centralized credential management</h3><p>Employees are using weak, reused, or shared passwords across ${gapCount.toLocaleString()} applications. Each one is a potential entry point for credential stuffing, phishing, and account takeover attacks. Without visibility, your security team cannot enforce policies, detect compromised credentials, or respond to incidents across ${Math.round(unprotectedPct)}% of your application surface.</p>`;
+  } else {
+    riskBox.className = 'risk-section safe';
+    riskBox.innerHTML = `<h3>Full coverage: all ${total.toLocaleString()} applications are under centralized credential management</h3><p>SSO covers ${ssoCount.toLocaleString()} applications with federated identity. An enterprise password manager extends protection to the remaining ${gapCount.toLocaleString()} applications with unique, strong credentials, autofill, secure sharing, and admin visibility. Together, they eliminate the coverage gap and give your security team complete oversight.</p>`;
+  }
+  
+  const costBox = document.getElementById('cost-box');
+  if (phase === 'current') {
+    const annualCost = estimatedRisk;
+    costBox.innerHTML = `<div class="icon danger">!</div><div class="text"><strong>Estimated annual risk exposure: $${annualCost.toFixed(1)}M</strong><br>Based on ${gapCount.toLocaleString()} unmanaged applications and a $${costM.toFixed(1)}M average breach cost. Even a single compromised credential in the unprotected gap can cascade into a full breach.</div>`;
+  } else {
+    const savings = (costM * (gapCount / total) * 0.15).toFixed(1);
+    costBox.innerHTML = `<div class="icon safe">&#10003;</div><div class="text"><strong>Risk reduction: ~$${savings}M in annualized exposure eliminated</strong><br>With every application under centralized management, credential-based attack surface drops by ${(100 - ssoPct)}%. Incident response time improves with full visibility across all ${total.toLocaleString()} apps.</div>`;
+  }
+}
+
+update();
+</script>
